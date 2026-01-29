@@ -1258,7 +1258,6 @@
         </div>
         <div class="home-shell">
           <div class="text-center">
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">화음 그리기</p>
             <h1 class="home-title mt-3 text-4xl font-semibold text-white">화음 그리기</h1>
             <p class="mt-2 text-sm text-slate-300">난이도에 따라 단계를 선택하고, 화음을 연결해봅시다.</p>
           </div>
@@ -1282,15 +1281,15 @@
           </div>
           <div class="relative mt-8 min-h-[380px] w-full">
             <button type="button" data-part="1" class="part-card part-star part-1">
-              <span class="part-label">PART 1</span>
+              <span class="part-label">화음 연결하기</span>
               <span class="star-core"></span>
             </button>
             <button type="button" data-part="2" class="part-card part-star part-2">
-              <span class="part-label">PART 2</span>
+              <span class="part-label">화음 진행 연결하기</span>
               <span class="star-core"></span>
             </button>
             <button type="button" data-part="3" class="part-card part-star part-3">
-              <span class="part-label">PART 3</span>
+              <span class="part-label">화음 진행 연결하기 (심화)</span>
               <span class="star-core"></span>
             </button>
             <div id="stagePicker" class="stage-picker hidden">
@@ -1579,9 +1578,9 @@
       const solfegeMap = { C: "도", D: "레", E: "미", F: "파", G: "솔", A: "라", B: "시" };
       const enharmonicMap = { "E#": "F", "B#": "C" };
       const stageParts = [
-        { label: "Part 1 (화음)", stageIds: [1, 2, 3] },
-        { label: "Part 2 (화음 진행)", stageIds: [4, 5, 6] },
-        { label: "Part 3 (화음 진행 심화)", stageIds: [7, 8, 9] }
+        { label: "화음 연결하기", stageIds: [1, 2, 3] },
+        { label: "화음 진행 연결하기", stageIds: [4, 5, 6] },
+        { label: "화음 진행 연결하기 (심화)", stageIds: [7, 8, 9] }
       ];
       const chordDescriptions = {
         1: {
@@ -2038,18 +2037,18 @@
 
       const partDescriptions = {
         1: {
-          title: "PART 1",
-          subtitle: "화음 연결하기",
+          title: "화음 연결하기",
+          subtitle: "",
           detail: ""
         },
         2: {
-          title: "PART 2",
-          subtitle: "화음 진행 연결하기",
+          title: "화음 진행 연결하기",
+          subtitle: "",
           detail: ""
         },
         3: {
-          title: "PART 3",
-          subtitle: "화음 진행 연결하기 (심화)",
+          title: "화음 진행 연결하기 (심화)",
+          subtitle: "",
           detail: ""
         }
       };
@@ -2183,7 +2182,8 @@
         stagePicker.className = `stage-picker part-${partNumber}`;
         stagePicker.dataset.activePart = partNumber;
         stageButtons.className = `constellation-row is-visible ${directionClass} ${alignClass}`;
-        const part = stageParts.find((item) => String(item.label).startsWith(`Part ${partNumber}`));
+        const partIndex = Math.max(0, Number(partNumber) - 1);
+        const part = stageParts[partIndex];
         const stageIds = part?.stageIds || [];
         if (stageIds.length > 0 && partNumber !== "2") {
           const startLine = document.createElement("span");

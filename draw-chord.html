@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>화음 그리기 - 1단계</title>
+    <title>화음 그리기</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -3504,8 +3504,7 @@
         lastRunResult = buildRunResult(currentStage.id);
         lastRunResult.bonusStars = bonusStars;
         updateBestRun(lastRunResult);
-        updateSummaryUI();
-      }
+              }
 
       function claimCurrentRunStars() {
         if (!lastRunResult) return;
@@ -3514,8 +3513,7 @@
         if (earned <= 0) return;
         totalClaimedStars += earned;
         saveClaimedStars();
-        updateSummaryUI();
-        syncLeaderboardScore();
+                syncLeaderboardScore();
         lastRunResult.claimedThisRun = true;
         refreshClaimButton();
       }
@@ -4437,8 +4435,7 @@
         breakStageStreak();
         document.getElementById("gameScreen").classList.add("hidden");
         document.getElementById("homeScreen").classList.remove("hidden");
-        updateSummaryUI();
-      });
+              });
       stageListenButton?.addEventListener("click", () => {
         hideStageCompleteOverlay();
         staffWrapper.classList.remove("hidden");
@@ -4568,13 +4565,11 @@
 
       closeRankingButton?.addEventListener("click", () => {
         rankingScreen?.classList.add("hidden");
-        document.getElementById("homeScreen")?.classList.remove("hidden");
-        updateSummaryUI();
-      });
+        document.getElementById("gameScreen")?.classList.remove("hidden");
+              });
 
       bestRuns = loadBestRuns();
-      updateSummaryUI();
-      setPlayerName(playerName);
+            setPlayerName(playerName);
       setSaveButtonState(Boolean(playerName));
       refreshLeaderboard();
       populateStages();
@@ -4593,8 +4588,7 @@
         document.getElementById("gameScreen").classList.add("hidden");
         document.getElementById("homeScreen").classList.remove("hidden");
         breakStageStreak();
-        updateSummaryUI();
-      });
+              });
     </script>
   </body>
 </html>
